@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TASKS } from 'src/app/fake-task';
+import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/Task';
 
 @Component({
@@ -9,8 +9,10 @@ import { Task } from 'src/app/Task';
 })
 export class TasksComponent implements OnInit {
   //retrieve fake task json server
-  newTask: Task[] = TASKS;
-  constructor() {}
+  public tasks: Task[] = [];
+  constructor(private taskservice: TaskService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tasks = this.taskservice.getTasks();
+  }
 }

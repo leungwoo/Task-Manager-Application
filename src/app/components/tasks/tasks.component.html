@@ -1,5 +1,1 @@
-<div class="container">
-  <div *ngFor="let t of newTask">
-    <p>{{ t.day }}</p>
-  </div>
-</div>
+<app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
