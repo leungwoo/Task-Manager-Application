@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TASKS } from 'src/app/fake-task';
 import { Task } from 'src/app/Task';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'Application/json',
+  }),
+};
 @Injectable({
   providedIn: 'root',
 })
@@ -19,5 +24,10 @@ export class TaskService {
     //need to identify the id to delete
     const url = `${this.apiUrl}/${task.id}`;
     return this.http.delete<Task>(url);
+  }
+  //HttpOptions for Updating method
+  public updateTakeReminder(task: Task): Observable<Task> {
+    const url = `${this.apiUrl}/${task.id}`;
+    return this.http.put<Task>(url, task, httpOptions);
   }
 }
