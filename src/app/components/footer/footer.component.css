@@ -1,0 +1,15 @@
+.footer {
+  align-content: center;
+  text-align: center;
+  margin-top: 30px;
+}
+.btnabout {
+  padding: 10px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: green;
+  color: white;
+}
+.copyright {
+  margin-top: 10px;
+}
