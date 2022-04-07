@@ -10,6 +10,7 @@ import { Task } from 'src/app/Task';
 export class TasksComponent implements OnInit {
   //retrieve fake task json server
   public tasks: Task[] = [];
+
   constructor(private taskservice: TaskService) {}
 
   ngOnInit(): void {
@@ -28,5 +29,8 @@ export class TasksComponent implements OnInit {
   toggleReminder(task: Task) {
     task.reminder = !task.reminder;
     this.taskservice.updateTakeReminder(task).subscribe();
+  }
+  addTask(task: Task) {
+    this.taskservice.AddTask(task).subscribe((task) => this.tasks.push(task));
   }
 }
