@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/services/ui.service';
 import { Task } from 'src/app/Task';
 
 @Component({
@@ -13,8 +15,14 @@ export class AddTaskComponent implements OnInit {
   public text!: string;
   public day!: string;
   public reminder: boolean = false;
+  public showAddTask!: boolean;
+  public subscription: Subscription;
 
-  constructor() {}
+  constructor(private uiService: UiService) {
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddTask = value));
+  }
 
   ngOnInit(): void {}
 
@@ -29,10 +37,10 @@ export class AddTaskComponent implements OnInit {
       reminder: this.reminder,
     };
     this.onAddTask.emit(newTask);
-
-    //todo emit event
+    // to clear the field after submitted
     this.text = '';
     this.day = '';
     this.reminder = false;
   }
 }
+// To add a add and remove feature to a component

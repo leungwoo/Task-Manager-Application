@@ -1,5 +1,4 @@
-<form class="add-form" (ngSubmit)="onSubmit()">
-  <!--template for form-->
+<form *ngIf="showAddTask" class="add-form" (ngSubmit)="onSubmit()">
   <div class="form-control">
     <label for="text">Task</label>
     <input
@@ -30,10 +29,5 @@
     />
   </div>
 
-  <input
-    type="button"
-    value="Save Task"
-    class="btn btn-block"
-    (click)="onSubmit()"
-  />
+  <input type="submit" value="Save Task" class="btn btn-block" />
 </form>
