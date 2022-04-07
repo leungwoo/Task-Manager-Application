@@ -1,10 +1,14 @@
 div {
   margin-left: 20px;
 }
-.btngoback {
+.btnbepro {
   padding: 5px 10px;
   border-radius: 5px;
   text-decoration: none;
   background-color: green;
   color: white;
+}
+.btnbepro:hover {
+  color: green;
+  background: black;
 }
